@@ -1,9 +1,9 @@
 body {
   background-color: blue;
+  font-family: sans-serif;
 }
 
 div.bar {
-
     display: inline-block;
     width: 20px;
     height: 75px;  
