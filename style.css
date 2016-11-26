@@ -1,4 +1,18 @@
 body {
-  background-color: white;
-  color: black;
+  background-color: blue;
+}
+
+div.bar {
+
+    display: inline-block;
+    width: 20px;
+    height: 75px;  
+    margin-right:2px;
+    background-color: white;
+}
+
+.circle {
+  fill: yellow;
+  stroke: orange;
+  stroke-width: 10px;
 }
