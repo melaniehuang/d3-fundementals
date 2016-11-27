@@ -1,4 +1,3 @@
-
 window.onload = function(){
   var fruits = [
     {
@@ -7,19 +6,44 @@ window.onload = function(){
         fodmap: "low"
     },
     {
-        kind: "apricot",
-        color: "coral",
-        fodmap: "high"
+        kind: "kiwifruit",
+        color: "chartreuse",
+        fodmap: "low"
     },
     {
         kind: "banana",
         color: "yellow",
         fodmap: "low"
+    },
+    {
+        kind: "raspberry",
+        color: "crimson",
+        fodmap: "low"
+    },
+    {
+        kind: "mushroom",
+        color: "blanchedalmond",
+        fodmap: "high"
+    },
+    {
+        kind: "avocado",
+        color: "lightgreen",
+        fodmap: "high"
+    },
+    {
+        kind: "cauliflower",
+        color: "ivory",
+        fodmap: "high"
+    },
+    {
+        kind: "apricot",
+        color: "coral",
+        fodmap: "high"
     }
   ];
 
-  var w = 1000;
-  var h = 300;
+  var w = 2000;
+  var h = 500;
   
   d3.select("body").append("p")
   				   .text("HIGH FODS")
@@ -39,36 +63,40 @@ window.onload = function(){
                 .data(fruits)
                 .enter()
                 .append("text")
-                .text(function(d){
-                  return d;
+                .text(function(d, i){
+                  return fruits[i].kind;
                 })
-                .attr("x",
-		          function(d, i) {
-			       return (i * 30) + 10;
-			      })
-   				.attr("y", function(d) {
-        		   return h - (d * 4);
-   				});
-
+  
+  text.attr("x", function(d, i){
+        return (i * 80) + 10;
+      })
+      .attr("y", function(d, i){
+        if (fruits[i].fodmap == "high"){
+          return 100;
+        } else if (fruits[i].fodmap == "low"){
+          return 270;
+        }
+      })
+      .attr("fill", function(d, i){
+        return fruits[i].color;  
+      });
+      
   rects.attr("x",
          function(d, i) {
-	       return (i * 30) + 10;
+	       return (i * 80) + 10;
 	     })
 	   .attr("y", function(d, i){
 	     if (fruits[i].fodmap == "high"){
-	       return 30;
+	       return 110;
 	     } else if (fruits[i].fodmap == "low"){
-	   	   return 150;
+	   	   return 280;
 	     }
 	   })
 	   .attr("width", 10)
-	   .attr("height", 100)
+	   .attr("height", 80)
 	   .attr("fill", function(d, i) {
 	 	  return fruits[i].color;
 	   }
-	   .attr(function(d, i) {
-         return fruits[i].kind;
-       })
   );
 	 
   d3.select("body").append("p")
